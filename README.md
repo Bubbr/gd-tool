@@ -16,7 +16,7 @@ There are two ways to initialize it, by the **level name** and by the **level id
 byName = gdmt.Level(byName="Bloodbath")
 byId   = gdmt.Level(byId=10565740)
 ```
-#### **gdmt.User**
+#### **gdmt.User** [View declaration](https://github.com/Bubbr/gd-tool/blob/983997b675cc8f7a72bc3c71c5a8c34a99658b3f/gdmt.py#L55)
 Just contains the **user information** like name, id, stars, demons, etc. Uses the method [**gdmt.getUserData()**](#gdmtgetuserdatastring) and [**gdmt.getUserInfo()**](#gdmtgetuserinfostring). You can initilizate by the user name or the  user id.
 ```python
 byName = gdmt.User("Riot")
