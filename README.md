@@ -10,13 +10,13 @@ import gdmt
 ```
 ### Classes
 There are two essential classes: **Level** and **User**.
-#### **gdmt.Level** [View declaration](https://github.com/Bubbr/gd-tool/blob/5f13d2b1d8e95834309fc67da52fc49db34a9803/gdmt.py#L29)
+#### **gdmt.Level** [View definition](https://github.com/Bubbr/gd-tool/blob/5f13d2b1d8e95834309fc67da52fc49db34a9803/gdmt.py#L29)
 There are two ways to initialize it, by the **level name** and by the **level id**, the level name is often more used than the level id, because you don't need to know the id and the name is easier to find. But I recomend to use the level id.
 ```python
 byName = gdmt.Level(byName="Bloodbath")
 byId   = gdmt.Level(byId=10565740)
 ```
-#### **gdmt.User** [View declaration](https://github.com/Bubbr/gd-tool/blob/983997b675cc8f7a72bc3c71c5a8c34a99658b3f/gdmt.py#L55)
+#### **gdmt.User** [View definition](https://github.com/Bubbr/gd-tool/blob/983997b675cc8f7a72bc3c71c5a8c34a99658b3f/gdmt.py#L55)
 Just contains the **user information** like name, id, stars, demons, etc. Uses the method [**gdmt.getUserData()**](#gdmtgetuserdatastring) and [**gdmt.getUserInfo()**](#gdmtgetuserinfostring). You can initilizate by the user name or the  user id.
 ```python
 byName = gdmt.User("Riot")
