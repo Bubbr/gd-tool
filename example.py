@@ -1,5 +1,5 @@
-import gdtool as gdt
-from gdtool import Level
+import gdmt
+from gdmt import Level
 import os
 
 def main():
@@ -26,7 +26,7 @@ def main():
         )
 
 if __name__ == "__main__":
-    print(f"secret: {gdt.secret}")
+    print(f"secret: {gdmt.secret}")
 
     main()
     while True:
