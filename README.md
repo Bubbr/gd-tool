@@ -10,7 +10,7 @@ import gdmt
 ```
 ### Classes
 There are two essential classes: **Level** and **User**.
-#### **gdmt.Level** 
+#### **gdmt.Level** [View declaration](https://github.com/Bubbr/gd-tool/blob/5f13d2b1d8e95834309fc67da52fc49db34a9803/gdmt.py#L29)
 There are two ways to initialize it, by the **level name** and by the **level id**, the level name is often more used than the level id, because you don't need to know the id and the name is easier to find. But I recomend to use the level id.
 ```python
 byName = gdmt.Level(byName="Bloodbath")
