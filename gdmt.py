@@ -1,6 +1,6 @@
 from urllib.request import urlopen, Request
 import base64
-import SavedData as sd
+import localdat as local
 from xml.dom import minidom
 
 url = "http://www.boomlings.com"
@@ -12,19 +12,33 @@ userinfo = "/database/getGJUserInfo20.php"
 usercomments = "/database/getGJAccountComments20.php"
 secret = "Wmfd2893gb7"
 
-file = minidom.parse('CCGameManager.dat.xml')
+def hasLocalDat():
+    try:
+        open('CCGameManager.dat.xml')
+        return True
+    except IOError:
+        return False
 
 def getUdid():
-    return file.getElementsByTagName('s')[25].firstChild.data
+    return file.getElementsByTagName('s')[26].firstChild.data
 
 def getUuid():
     return file.getElementsByTagName('i')[0].firstChild.data
 
-sd.decrypt()
+def getPlayerName():
+    return file.getElementsByTagName('s')[27].firstChild.data
+
+if hasLocalDat():
+    file = minidom.parse('CCGameManager.dat.xml')
+else:
+    local.decrypt()
+    file = minidom.parse('CCGameManager.dat.xml')
+
 udid = getUdid()
-print(f"udid: {udid}")
 uuid = getUuid()
-print(f"uuid: {uuid}")
+playername = getPlayerName()
+
+print(f'Sign in as "{playername}"\nudid: {udid}\nuuid: {uuid}')
 
 class Level:
     def __init__(self, byId=None, byName=None):

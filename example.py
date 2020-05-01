@@ -4,7 +4,7 @@ import os
 
 def main():
     print(
-        '\n\tBienvenido a GDT (Geometry Dash Tool) by Felis\n'
+        '\n\tBienvenido a GDMT (Geometry Dash Multi-Tool) by Felis\n'
         'Documentación y codigo fuente disponible en https://github.com/Bubbr/gd-tool\n'
         )
     lvl = Level(byName=str(input("Nombre del nivel\n> ")))
@@ -30,12 +30,12 @@ if __name__ == "__main__":
 
     main()
     while True:
-        op = int(input("¿Intentar de nuevo?\n\t[1] Sí\n\t[2] No\n> "))
+        op = input("¿Intentar de nuevo?\n\t[1] Sí\n\t[2] No\n> ")
         if op == 1:
             os.system('cls')
             main()
         else:
-            input('\n\tHasta la próxima! Gracias por usar GDT.\n'
+            input('\n\tHasta la próxima! Gracias por usar GDMT.\n'
                   '\nPresione enter para salir...'
                   )
             break
