@@ -1,6 +1,7 @@
 import gdmt
 from gdmt import Level
 import os
+import logging
 
 def main():
     print(
@@ -12,28 +13,38 @@ def main():
         '\nDatos del nivel\n'
         f'\n\tNombre: {lvl.name}\n'
         f'\tId: {lvl.id}\n'
-        f'\tCreador: {lvl.author.name}\n'
+        f'\tCreador: {lvl.creator.name}\n'
         )
     print(
         'Datos del creador\n\n'
-        f'\tNombre: {lvl.author.name}\n'
-        f'\tId: {lvl.author.id}\n'
-        f'\tSecret coins: {lvl.author.secretCoins}\n'
-        f'\tUser coins: {lvl.author.userCoins}\n'
-        f'\tStars: {lvl.author.stars}\n'
-        f'\tDiamonds: {lvl.author.diamonds}\n'
-        f'\tDemons: {lvl.author.demons}\n'
+        f'\tNombre: {lvl.creator.name}\n'
+        f'\tId: {lvl.creator.id}\n'
+        f'\tSecret coins: {lvl.creator.secretCoins}\n'
+        f'\tUser coins: {lvl.creator.userCoins}\n'
+        f'\tStars: {lvl.creator.stars}\n'
+        f'\tDiamonds: {lvl.creator.diamonds}\n'
+        f'\tDemons: {lvl.creator.demons}\n'
         )
+    lvl.saveAsJSON()
 
 if __name__ == "__main__":
-    print(f"secret: {gdmt.secret}")
+    print(
+        f"secret: {gdmt.secret}"
+        )
 
-    main()
+    try:
+        main()
+    except:
+        print("\nAlgo salió mal, quizas el nivel no existe :/\n")
+    
     while True:
         op = input("¿Intentar de nuevo?\n\t[1] Sí\n\t[2] No\n> ")
-        if op == 1:
+        if op == "1":
             os.system('cls')
-            main()
+            try:
+                main()
+            except:
+                print("\nAlgo salió mal, quizas el nivel no existe :/\n")
         else:
             input('\n\tHasta la próxima! Gracias por usar GDMT.\n'
                   '\nPresione enter para salir...'

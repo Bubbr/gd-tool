@@ -2,6 +2,8 @@ from urllib.request import urlopen, Request
 import base64
 import localdat as local
 from xml.dom import minidom
+import json
+import plistlib as plib
 
 url = "http://www.boomlings.com"
 stuff = "gameVersion=21&binaryVersion=34&gdw=0"
@@ -12,33 +14,58 @@ userinfo = "/database/getGJUserInfo20.php"
 usercomments = "/database/getGJAccountComments20.php"
 secret = "Wmfd2893gb7"
 
+def fixPlist(file_name, output_name):
+    with open(file_name, 'r') as f:
+        s = f.read()
+        s = s.replace('<k>','<key>')
+        s = s.replace('</k>','</key>')
+        s = s.replace('<s>','<string>')
+        s = s.replace('</s>','</string>')
+        s = s.replace('<d>','<dict>')
+        s = s.replace('</d>','</dict>')
+        s = s.replace('<a>','<array>')
+        s = s.replace('</a>','</array>')
+        s = s.replace('<i>','<integer>')
+        s = s.replace('</i>','</integer>')
+        s = s.replace('<r>','<real>')
+        s = s.replace('</r>','</real>')
+        s = s.replace('<t/>','<true/>')
+        s = s.replace('<f/>','<false/>')
+        s = s.replace('<d/>','<data></data>')
+        open(output_name, 'w').write(s)
+        f.close()
+
+def readPlist(file_name):
+    with open(file_name, 'rb') as f:
+        p = plib.load(f)
+        f.close()
+        return p
+
 def hasLocalDat():
     try:
         open('CCGameManager.dat.xml')
+        open('CCLocalLevels.dat.xml')
+        open('CCGameManager.plist')
+        open('CCLocalLevels.plist')
         return True
     except IOError:
         return False
 
-def getUdid():
-    return file.getElementsByTagName('s')[26].firstChild.data
-
-def getUuid():
-    return file.getElementsByTagName('i')[0].firstChild.data
-
-def getPlayerName():
-    return file.getElementsByTagName('s')[27].firstChild.data
-
 if hasLocalDat():
-    file = minidom.parse('CCGameManager.dat.xml')
+    localLevels = readPlist('CCLocalLevels.plist')
+    localData = readPlist('CCGameManager.plist')
 else:
+    print('Preparando todo, esto solo se ejecutará una vez...')
     local.decrypt()
-    file = minidom.parse('CCGameManager.dat.xml')
+    fixPlist('CCLocalLevels.dat.xml', 'CCLocalLevels.plist')
+    fixPlist('CCGameManager.dat.xml', 'CCGameManager.plist')
+    localLevels = readPlist('CCLocalLevels.plist')
+    localData = readPlist('CCGameManager.plist')
+    print('Listo!')
 
-udid = getUdid()
-uuid = getUuid()
-playername = getPlayerName()
-
-print(f'Sign in as "{playername}"\nudid: {udid}\nuuid: {uuid}')
+playerUDID = localData['playerUDID']
+playerName = localData['playerName']
+playerUserID = localData['playerUserID']
 
 class Level:
     def __init__(self, byId=None, byName=None):
@@ -58,13 +85,23 @@ class Level:
         self.name = s[3]
         self.description = base64.b64decode(s[5])
         self.compressedString = s[7]
-        self.author = User(s[11])
+        self.creator = User(s[11])
 
-    def saveAsGML(self):
-        pass
+    def saveRaw(self):
+        with open(f'./output/{self.id} - {self.name}.txt', 'w') as file:
+            file.write(self.raw)
+            file.close()
 
-    def saveAsDat():
-        pass
+    def saveAsJSON(self):
+        with open(f'./output/{self.id} - {self.name}.json', 'w') as file:
+            data = {
+                'id':self.id,
+                'name':self.name,
+                'creator':self.creator.name,
+                'level_string':self.compressedString
+                }
+            json.dump(data, file)
+            file.close()
 
 class User:
     def __init__(self, string):
@@ -98,7 +135,7 @@ def getLevelId(Name):
 
 def getUserInfo(string):
     d = getUserData(string).split(':')[21]
-    p = f"{stuff}&udid={udid}&uuid={uuid}&targetAccountID={d}&secret={secret}"
+    p = f"{stuff}&udid={playerUDID}&uuid={playerUserID}&targetAccountID={d}&secret={secret}"
     return getFromUrl(userinfo, p)
 
 def getGridPos(pos):

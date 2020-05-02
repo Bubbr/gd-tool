@@ -8,7 +8,7 @@ from xml.dom import minidom
 
 __version__ = '1.1.2'
 
-SAVE_FILE_NAME = ['CCGameManager.dat']#, 'CCGameManager2.dat','CCLocalLevels.dat', 'CCLocalLevels2.dat']
+SAVE_FILE_NAME = ['CCGameManager.dat','CCLocalLevels.dat']
 SAVE_FILE_PATH = os.path.join(os.getenv('LocalAppData'), 'GeometryDash')
 
 prettify_xml = True
