@@ -8,10 +8,12 @@ from xml.dom import minidom
 
 __version__ = '1.1.2'
 
-SAVE_FILE_NAME = ['CCGameManager.dat','CCLocalLevels.dat']
+SAVE_FILE_NAME = ['CCGameManager.dat','CCGameManager2.dat', 'CCLocalLevels.dat', 'CCLocalLevels2.dat']
 SAVE_FILE_PATH = os.path.join(os.getenv('LocalAppData'), 'GeometryDash')
 
 prettify_xml = True
+
+
 
 def xor_bytes(data: bytes, value: int) -> bytes:
     return bytes(map(lambda x: x ^ value, data))
@@ -72,3 +74,5 @@ def decrypt():
         except Exception as err:
             print(f'Failed to decrypt {save_file}!')
             traceback.print_exc()
+if __name__ == "__main__":
+    encrypt()

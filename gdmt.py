@@ -4,6 +4,7 @@ import localdat as local
 from xml.dom import minidom
 import json
 import plistlib as plib
+import gzip
 
 url = "http://www.boomlings.com"
 stuff = "gameVersion=21&binaryVersion=34&gdw=0"
@@ -12,6 +13,7 @@ search = "/database/getGJLevels21.php"
 user = "/database/getGJUsers20.php"
 userinfo = "/database/getGJUserInfo20.php"
 usercomments = "/database/getGJAccountComments20.php"
+levelcomments = "/database/getGJComments21.php"
 secret = "Wmfd2893gb7"
 
 def fixPlist(file_name, output_name):
@@ -86,7 +88,16 @@ class Level:
         self.description = base64.b64decode(s[5])
         self.compressedString = s[7]
         self.creator = User(s[11])
-
+        self.decompressedString = self.decompress(self.compressedString)
+    
+    def decompress(self, raw):
+        raw = list(raw)
+        raw[12] = "/"
+        raw = "".join(raw)
+        raw = raw.replace('-', '+')
+        raw = raw.replace('_', '/')
+        return gzip.decompress(base64.b64decode(raw))
+    
     def saveRaw(self):
         with open(f'./output/{self.id} - {self.name}.txt', 'w') as file:
             file.write(self.raw)
@@ -137,6 +148,10 @@ def getUserInfo(string):
     d = getUserData(string).split(':')[21]
     p = f"{stuff}&udid={playerUDID}&uuid={playerUserID}&targetAccountID={d}&secret={secret}"
     return getFromUrl(userinfo, p)
+
+def getLevelComments(page, Id):
+    p = f"{stuff}&page={page}&total=0&secret={secret}&mode=0&levelID={Id}"
+    return getFromUrl(levelcomments, p)
 
 def getGridPos(pos):
     return (pos[0]/30+0.5, pos[1]/30-0.5)
