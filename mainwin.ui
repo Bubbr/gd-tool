@@ -1,0 +1,807 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Dialog</class>
+ <widget class="QDialog" name="Dialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>563</width>
+    <height>432</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>GDMT v2</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="src.qrc">
+    <normaloff>:/img/EditorMode.webp</normaloff>:/img/EditorMode.webp</iconset>
+  </property>
+  <property name="windowOpacity">
+   <double>1.000000000000000</double>
+  </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
+  <widget class="QTabWidget" name="tab_music">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>40</y>
+     <width>541</width>
+     <height>381</height>
+    </rect>
+   </property>
+   <property name="currentIndex">
+    <number>3</number>
+   </property>
+   <widget class="QWidget" name="tab_search">
+    <attribute name="title">
+     <string>Buscar nivel</string>
+    </attribute>
+    <widget class="QLineEdit" name="levelString">
+     <property name="geometry">
+      <rect>
+       <x>120</x>
+       <y>10</y>
+       <width>301</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="toolTip">
+      <string/>
+     </property>
+     <property name="inputMask">
+      <string/>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_level">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>111</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Nombre o id del nivel:</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="searchLevel">
+     <property name="geometry">
+      <rect>
+       <x>430</x>
+       <y>10</y>
+       <width>75</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Buscar</string>
+     </property>
+    </widget>
+    <widget class="QTableWidget" name="level_info">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>40</y>
+       <width>511</width>
+       <height>271</height>
+      </rect>
+     </property>
+     <attribute name="horizontalHeaderCascadingSectionResizes">
+      <bool>false</bool>
+     </attribute>
+     <attribute name="horizontalHeaderDefaultSectionSize">
+      <number>100</number>
+     </attribute>
+     <attribute name="horizontalHeaderStretchLastSection">
+      <bool>true</bool>
+     </attribute>
+     <attribute name="verticalHeaderCascadingSectionResizes">
+      <bool>false</bool>
+     </attribute>
+     <attribute name="verticalHeaderMinimumSectionSize">
+      <number>10</number>
+     </attribute>
+     <attribute name="verticalHeaderDefaultSectionSize">
+      <number>47</number>
+     </attribute>
+     <attribute name="verticalHeaderShowSortIndicator" stdset="0">
+      <bool>false</bool>
+     </attribute>
+     <attribute name="verticalHeaderStretchLastSection">
+      <bool>true</bool>
+     </attribute>
+     <row>
+      <property name="text">
+       <string>Id del nivel</string>
+      </property>
+     </row>
+     <row>
+      <property name="text">
+       <string>Nombre</string>
+      </property>
+     </row>
+     <row>
+      <property name="text">
+       <string>Descripción</string>
+      </property>
+     </row>
+     <row>
+      <property name="text">
+       <string>Creador</string>
+      </property>
+     </row>
+     <row>
+      <property name="text">
+       <string>Music</string>
+      </property>
+     </row>
+     <column>
+      <property name="text">
+       <string>Datos del nivel</string>
+      </property>
+     </column>
+    </widget>
+    <widget class="QPushButton" name="downloadSong">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>320</y>
+       <width>171</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Descargar canción</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="listensong">
+     <property name="geometry">
+      <rect>
+       <x>190</x>
+       <y>320</y>
+       <width>75</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Escuchar</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="btn_hax_copy">
+     <property name="geometry">
+      <rect>
+       <x>450</x>
+       <y>320</y>
+       <width>75</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Copiar nivel</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="tab_local_music">
+    <attribute name="title">
+     <string>Música descargada</string>
+    </attribute>
+    <widget class="QListWidget" name="list_songs">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>40</y>
+       <width>511</width>
+       <height>251</height>
+      </rect>
+     </property>
+     <property name="viewMode">
+      <enum>QListView::ListMode</enum>
+     </property>
+     <property name="selectionRectVisible">
+      <bool>false</bool>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="songString">
+     <property name="geometry">
+      <rect>
+       <x>100</x>
+       <y>10</y>
+       <width>231</width>
+       <height>20</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_5">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>10</y>
+       <width>81</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Buscar canción:</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="searchSong">
+     <property name="geometry">
+      <rect>
+       <x>340</x>
+       <y>10</y>
+       <width>75</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Buscar</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="song_timeStamp">
+     <property name="geometry">
+      <rect>
+       <x>420</x>
+       <y>310</y>
+       <width>51</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>00:00</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QSlider" name="songbar">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>154</x>
+       <y>310</y>
+       <width>261</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>0</height>
+      </size>
+     </property>
+     <property name="sizeIncrement">
+      <size>
+       <width>0</width>
+       <height>0</height>
+      </size>
+     </property>
+     <property name="baseSize">
+      <size>
+       <width>0</width>
+       <height>0</height>
+      </size>
+     </property>
+     <property name="minimum">
+      <number>0</number>
+     </property>
+     <property name="maximum">
+      <number>100</number>
+     </property>
+     <property name="value">
+      <number>0</number>
+     </property>
+     <property name="tracking">
+      <bool>false</bool>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="invertedAppearance">
+      <bool>false</bool>
+     </property>
+     <property name="invertedControls">
+      <bool>false</bool>
+     </property>
+     <property name="tickPosition">
+      <enum>QSlider::NoTicks</enum>
+     </property>
+     <property name="tickInterval">
+      <number>0</number>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="playSong">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>64</x>
+       <y>310</y>
+       <width>75</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Reproducir</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="deleteSong">
+     <property name="geometry">
+      <rect>
+       <x>420</x>
+       <y>10</y>
+       <width>75</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Eliminar</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="tab_local_levels">
+    <attribute name="title">
+     <string>Niveles locales</string>
+    </attribute>
+    <widget class="QTableWidget" name="table_local_levels">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>511</width>
+       <height>291</height>
+      </rect>
+     </property>
+     <column>
+      <property name="text">
+       <string>Nombre</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Descripción</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Canción</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Duración</string>
+      </property>
+     </column>
+    </widget>
+    <widget class="QPushButton" name="btn_verify_hack">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>310</y>
+       <width>91</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Verificar</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="btn_load_local_levels">
+     <property name="geometry">
+      <rect>
+       <x>434</x>
+       <y>310</y>
+       <width>81</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Cargar niveles</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="tab_mmscript">
+    <attribute name="title">
+     <string>MM Script</string>
+    </attribute>
+    <widget class="QLineEdit" name="lineEdit">
+     <property name="geometry">
+      <rect>
+       <x>100</x>
+       <y>10</y>
+       <width>121</width>
+       <height>20</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>61</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Id del nivel:</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_2">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>70</y>
+       <width>81</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Layout group id:</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit_2">
+     <property name="geometry">
+      <rect>
+       <x>100</x>
+       <y>70</y>
+       <width>113</width>
+       <height>20</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="checkBox">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>120</y>
+       <width>111</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Mostrar porcentaje</string>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="checkBox_2">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>140</y>
+       <width>111</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Mostrar comentario</string>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="checkBox_3">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>160</y>
+       <width>101</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Mostrar usuario</string>
+     </property>
+    </widget>
+    <widget class="QTextEdit" name="textEdit">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>230</y>
+       <width>231</width>
+       <height>111</height>
+      </rect>
+     </property>
+     <property name="html">
+      <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2';&quot;&gt;#ITEM&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2';&quot;&gt;size:0.25,&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2';&quot;&gt;group:1;&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2';&quot;&gt;#GLOBAL&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2';&quot;&gt;alpha:1|0.5;&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_3">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>200</y>
+       <width>91</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Customizar objetos</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton">
+     <property name="geometry">
+      <rect>
+       <x>440</x>
+       <y>320</y>
+       <width>75</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Ejecutar</string>
+     </property>
+    </widget>
+    <widget class="QProgressBar" name="progressBar">
+     <property name="geometry">
+      <rect>
+       <x>257</x>
+       <y>320</y>
+       <width>171</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="value">
+      <number>0</number>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_4">
+     <property name="geometry">
+      <rect>
+       <x>230</x>
+       <y>10</y>
+       <width>81</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>(debe ser tuyo)</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_2">
+     <property name="geometry">
+      <rect>
+       <x>220</x>
+       <y>70</y>
+       <width>21</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>?</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_3">
+     <property name="geometry">
+      <rect>
+       <x>250</x>
+       <y>230</y>
+       <width>21</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>?</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="tab_help">
+    <attribute name="title">
+     <string>Ayuda</string>
+    </attribute>
+    <widget class="QTreeWidget" name="treeWidget">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>511</width>
+       <height>121</height>
+      </rect>
+     </property>
+     <column>
+      <property name="text">
+       <string>Indice</string>
+      </property>
+     </column>
+     <item>
+      <property name="text">
+       <string>MM Script</string>
+      </property>
+      <item>
+       <property name="text">
+        <string>Concepto</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Parámetros</string>
+       </property>
+       <item>
+        <property name="text">
+         <string>Layout id</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Customizar objetos</string>
+        </property>
+       </item>
+      </item>
+     </item>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="tab_credits">
+    <attribute name="title">
+     <string>Aviso de uso</string>
+    </attribute>
+    <widget class="QLabel" name="label_disclaimer">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>491</width>
+       <height>221</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2';&quot;&gt;Documentación y código fuente disponible en &lt;/span&gt;&lt;a href=&quot;https://github.com/Bubbr/gd-tool&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2'; text-decoration: underline; color:#0000ff;&quot;&gt;GitHub.&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2';&quot;&gt;Este programa es totalmente gratuito y sin fines de lucro. Es únicamente para fines educativos y pedimos a todos los usuarios que no lo utilicen para su propio beneficio. Por ejemplo, si tienen que verificar un nivel, no hagan uso de este programa y proclamen como suya dicha verificación, esto con el objetivo de crear una comunidad sana y que no este llena de &lt;/span&gt;&lt;a href=&quot;https://es.wikipedia.org/wiki/Script_kiddie&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2'; text-decoration: underline; color:#0000ff;&quot;&gt;scripts kiddies&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2';&quot;&gt; que buscan fama.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2';&quot;&gt;El objetivo de este proyecto es exprimir las capacidades del juego y con ello hacer sorprendentes creaciones que beneficiaran a la comunidad y no la afectaran, este proyecto esta basado en la curiosidad y en expandir el conocimiento.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2';&quot;&gt;Cualquier duda o sugerencia pueden enviarme un e-mail al siguiente correo correoejemploxd.gmail.com.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2';&quot;&gt;Apoya a la comunidad y no la perjudiques. ;)&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2';&quot;&gt;Atentamente: ~Un tipo random de Internet~&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+     </property>
+     <property name="wordWrap">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_copy">
+     <property name="geometry">
+      <rect>
+       <x>190</x>
+       <y>300</y>
+       <width>151</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>8</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Geometry Dash Multi-Tool v2&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="btn_accept">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>230</x>
+       <y>260</y>
+       <width>75</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Continuar</string>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="check_use">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>120</x>
+       <y>230</y>
+       <width>301</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Acepto que no usaré este programa para fines maliciosos.</string>
+     </property>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QLabel" name="title">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>261</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>14</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
+   <property name="text">
+    <string>Geometry Dash Multi-Tool v2</string>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+ </widget>
+ <tabstops>
+  <tabstop>tab_music</tabstop>
+  <tabstop>songString</tabstop>
+  <tabstop>searchSong</tabstop>
+  <tabstop>songbar</tabstop>
+  <tabstop>list_songs</tabstop>
+  <tabstop>playSong</tabstop>
+  <tabstop>deleteSong</tabstop>
+  <tabstop>levelString</tabstop>
+  <tabstop>searchLevel</tabstop>
+  <tabstop>level_info</tabstop>
+  <tabstop>downloadSong</tabstop>
+  <tabstop>listensong</tabstop>
+  <tabstop>btn_hax_copy</tabstop>
+  <tabstop>table_local_levels</tabstop>
+  <tabstop>btn_verify_hack</tabstop>
+  <tabstop>btn_accept</tabstop>
+  <tabstop>check_use</tabstop>
+ </tabstops>
+ <resources>
+  <include location="src.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>check_use</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>btn_accept</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>174</x>
+     <y>304</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>259</x>
+     <y>337</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

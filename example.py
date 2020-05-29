@@ -28,10 +28,7 @@ def main():
     lvl.saveAsJSON()
 
 if __name__ == "__main__":
-    print(
-        f"secret: {gdmt.secret}"
-        )
-
+    print("secret:",gdmt.secret)
     try:
         main()
     except:
