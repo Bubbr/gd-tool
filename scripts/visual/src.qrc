@@ -1,0 +1,7 @@
+<RCC>
+  <qresource prefix="img">
+    <file>Wiki-background.webp</file>
+    <file>gdmtv2.png</file>
+    <file>EditorMode.webp</file>
+  </qresource>
+</RCC>

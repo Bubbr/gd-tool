@@ -1,5 +1,13 @@
 # Geometry Dash Multi-Tool (GDMT)
 
+## Work in progress
+Tengo muchas cosas por hacer:
+- Ordenar los archivos en distintas carpetas.
+- Volver a escribir todo el código para que permita una mayor flexibilidad.
+- Ordenar el código espagueti.
+- Dejar de lado de la UI y enfocarme en lo principal, GDMT.
+- Escribir una nueva documentación.
+
 Welcome to **Geometry Dash Multi-Tool** a way to do several things for Geometry Dash... yep, that dead game...
 First I'll teach you how GDMT works!
 
